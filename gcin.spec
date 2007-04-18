@@ -1,6 +1,7 @@
 %define version	1.3.4
-%define pre_version pre5
-%define release	%mkrel -c %{pre_version} 1
+#%define pre_version pre5
+#%define release	%mkrel -c %{pre_version} 1
+%define release %mkrel 1
 
 %define libname_orig lib%{name}
 %define libname %mklibname %{name} 1
@@ -12,14 +13,14 @@ Release:	%{release}
 License:	LGPL
 URL: 		http://www.csie.nctu.edu.tw/~cp76/gcin/
 Group:		System/Internationalization
-Source0:	http://www.csie.nctu.edu.tw/~cp76/gcin/download/%{name}-%{version}.%{pre_version}.tar.bz2
+Source0:	http://www.csie.nctu.edu.tw/~cp76/gcin/download/%{name}-%{version}.tar.bz2
 # There is no need keep source{1,2,3}, because we manage IMEs through different way than Fedora
 #Source1:	xcin2gcin
 #Source2:	gcin.sh
 #Source3:	set-gcin-sys-xim
-Patch2:		gcin-1.0.9-64bit-fixes.patch
-Patch3:		gcin-1.2.0-fix-x86_64-build.patch
-Patch4:		gcin-1.3.4-fix-gcinlibdir.patch
+#Patch2:		gcin-1.0.9-64bit-fixes.patch
+#Patch3:		gcin-1.2.0-fix-x86_64-build.patch
+#Patch4:		gcin-1.3.4-fix-gcinlibdir.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 Requires(post):	gtk+2.0
 Requires(postun): gtk+2.0
@@ -48,7 +49,7 @@ gcin is a Chinese input method server for traditional Chinese.
 It features a better GTK user interface.
 
 %prep
-%setup -q -n %{name}-%{version}.%{pre_version}
+%setup -q -n %{name}-%{version}
 #%patch2 -p1 -b .64bit-fixes
 #%patch3 -p1 -b .fpic
 #%patch4 -p0 -b .configure-fix
@@ -139,5 +140,3 @@ gtk-query-immodules-2.0 > %{_sysconfdir}/gtk-2.0/gtk.immodules.%_lib
 %defattr(-,root,root)
 %doc COPYING
 %{_libdir}/gcin/*
-
-
