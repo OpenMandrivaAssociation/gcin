@@ -55,7 +55,7 @@ rm -rf %{buildroot}
 # fix installing in proper path on x86_64:
 %makeinstall_std libdir=%buildroot%_libdir
 rm -fr %buildroot%_docdir/
-rm -fr %buildroot%_menudir/
+rm -fr %buildroot%_libdir/menu/
 
 desktop-file-install --vendor="" \
   --remove-category="Application" \
