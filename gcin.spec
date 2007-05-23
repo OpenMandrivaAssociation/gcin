@@ -99,11 +99,10 @@ gtk-query-immodules-2.0 > %{_sysconfdir}/gtk-2.0/gtk.immodules.%_lib
 %{_datadir}/gcin
 %{_iconsdir}/*
 %{_mandir}/man?/*
+%{qt3plugins}/inputmethods/*
 
 %files -n %{libname}
 %defattr(-,root,root)
 %doc COPYING
 %{_libdir}/gcin/*
 %{_libdir}/gtk-2.0/immodules/*.so
-%{qt3plugins}/inputmethods/*
-
