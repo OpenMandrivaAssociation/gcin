@@ -22,7 +22,7 @@ BuildRequires:	qt3-devel >= 3.3.6-16mdk
 Requires:	%{libname} = %{version}
 Requires:	locales-zh
 # ease upgrade
-Conflicts:	%{libname} < 0.9.5-2mdk
+Conflicts:	%{libname} < 1.3.5-0.pre2
 
 %description
 gcin is a Chinese input method server for traditional Chinese. 
@@ -33,7 +33,7 @@ It features a better GTK user interface.
 Summary:	Gcin library
 Group:		System/Internationalization
 Provides:	%{libname_orig} = %{version}-%{release}
-Conflicts:	%{name} < 0.9.5-2mdk
+Conflicts:	%{name} < 1.3.5-0.pre2
 Obsoletes:	%mklibname %{name} 0
 
 %description -n %{libname}
@@ -54,24 +54,8 @@ make
 rm -rf %{buildroot}
 # fix installing in proper path on x86_64:
 %makeinstall_std libdir=%buildroot%_libdir
-rm -fr %buildroot%_libdir/menu
 rm -fr %buildroot%_docdir/
-
-# remove menu from package
-rm -f %{buildroot}%{_menudir}/*
-
-# menu
-mkdir -p %{buildroot}%{_menudir}
-cat > %{buildroot}%{_menudir}/%{name} << _EOF_
-?package(%{name}): \
- icon="gcin.png" \
- title="GCIN setup" \
- longtitle="GCIN setup" \
- needs="x11" \
- section="System/Configuration/Other" \
- command="%{_bindir}/gcin-setup"\
- xdg="true"
-_EOF_
+rm -fr %buildroot%_menudir/
 
 desktop-file-install --vendor="" \
   --remove-category="Application" \
@@ -114,12 +98,12 @@ gtk-query-immodules-2.0 > %{_sysconfdir}/gtk-2.0/gtk.immodules.%_lib
 %{_datadir}/control-center-2.0/capplets/*
 %{_datadir}/gcin
 %{_iconsdir}/*
-%{_libdir}/gtk-2.0/immodules/*.so
-%{qt3plugins}/inputmethods/*
 %{_mandir}/man?/*
-%{_menudir}/*
 
 %files -n %{libname}
 %defattr(-,root,root)
 %doc COPYING
 %{_libdir}/gcin/*
+%{_libdir}/gtk-2.0/immodules/*.so
+%{qt3plugins}/inputmethods/*
+
