@@ -1,5 +1,5 @@
 %define version	1.3.5
-%define pre_version pre2
+%define pre_version pre4
 %define release	%mkrel -c %{pre_version} 2
 
 %define libname_orig lib%{name}
