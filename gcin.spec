@@ -1,6 +1,5 @@
 %define version	1.3.5
-%define pre_version pre7
-%define release	%mkrel -c %{pre_version} 1
+%define release	%mkrel 1
 
 %define libname %mklibname %{name} 1
 
@@ -11,7 +10,7 @@ Release:	%{release}
 License:	LGPL
 URL: 		http://www.csie.nctu.edu.tw/~cp76/gcin/
 Group:		System/Internationalization
-Source0:	http://www.csie.nctu.edu.tw/~cp76/gcin/download/%{name}-%{version}.%{pre_version}.tar.bz2
+Source0:	http://www.csie.nctu.edu.tw/~cp76/gcin/download/%{name}-%{version}.tar.bz2
 Patch0:		gcin-1.3.5.pre7-desktop-file.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 Requires(post):	gtk+2.0
@@ -51,7 +50,7 @@ Requires:	%name = %{version}-%{release}
 This is the qt3 immodule support for gcin
 
 %prep
-%setup -q -n %{name}-%{version}.%{pre_version}
+%setup -q -n %{name}-%{version}
 %patch0 -p0
 
 %build
