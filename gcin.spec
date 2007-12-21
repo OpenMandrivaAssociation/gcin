@@ -22,6 +22,7 @@ URL: 		http://www.csie.nctu.edu.tw/~cp76/gcin/
 Group:		System/Internationalization
 Source0:	http://www.csie.nctu.edu.tw/~cp76/gcin/download/%{name}-%{tarballver}.tar.bz2
 Patch0:		gcin-1.3.5.pre7-desktop-file.patch
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 Requires(post):	gtk+2.0
 Requires(postun): gtk+2.0
 BuildRequires:	X11-devel
