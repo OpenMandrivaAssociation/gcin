@@ -1,5 +1,5 @@
-%define version	1.4.0
-%define betaver pre2
+%define version	1.4.1
+%define betaver 0
 %define rel 1
 
 %if %betaver
@@ -21,7 +21,7 @@ License:	LGPL
 URL: 		http://www.csie.nctu.edu.tw/~cp76/gcin/
 Group:		System/Internationalization
 Source0:	http://www.csie.nctu.edu.tw/~cp76/gcin/download/%{name}-%{tarballver}.tar.bz2
-Patch0:		gcin-1.3.5.pre7-desktop-file.patch
+Patch0:		gcin-1.4.1-build-qt3.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 Requires(post):	gtk+2.0
 Requires(postun): gtk+2.0
@@ -61,14 +61,14 @@ This is the qt3 immodule support for gcin
 
 %prep
 %setup -q -n %{name}-%{tarballver}
-%patch0 -p0
+%patch0 -p1
 
 %build
 %configure2_5x
 # (tv) this helps building on x86_64:
 #make -C im-client
 # (tv) disable parallel build (broken):
-make
+make OPTFLAGS="%{optflags}"
 
 %install
 rm -rf %{buildroot}
@@ -76,11 +76,6 @@ rm -rf %{buildroot}
 %makeinstall_std libdir=%buildroot%_libdir
 rm -fr %buildroot%_docdir/
 rm -fr %buildroot%_libdir/menu/
-
-# dispatch qt plugins to the right directory
-mkdir -p %{buildroot}%{qt3plugins}/inputmethods/
-mv -f %{buildroot}%{_libdir}/qt3/plugins/inputmethods/*.so %{buildroot}%{qt3plugins}/inputmethods/
-rm -rf %{buildroot}%{_libdir}/qt3/plugins/inputmethods/
 
 # remove unneeded files
 rm -rf %{buildroot}/%{_includedir}
