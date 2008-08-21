@@ -1,5 +1,5 @@
-%define version	1.4.2
-%define betaver 0
+%define version	1.4.3
+%define betaver pre5
 %define rel 1
 
 %if %betaver
@@ -21,15 +21,15 @@ License:	LGPL
 URL: 		http://www.csie.nctu.edu.tw/~cp76/gcin/
 Group:		System/Internationalization
 Source0:	http://www.csie.nctu.edu.tw/~cp76/gcin/download/%{name}-%{tarballver}.tar.bz2
-Patch0:		gcin-1.4.1-build-qt3.patch
+Patch0:		gcin-1.4.3-build-qt.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 Requires(post):	gtk+2.0
 Requires(postun): gtk+2.0
-BuildRequires:	X11-devel
 BuildRequires:	gtk+2-devel
 BuildRequires:	qt3-devel >= 3.3.6-16mdk
+BuildRequires:	qt4-devel
 Requires:	%{libname} = %{version}-%{release}
-Suggests:	%{name}-qt3 = %{version}-%{release}
+Suggests:	%{name}-qt4 = %{version}-%{release}
 Requires:	locales-zh
 # ease upgrade
 Conflicts:	%{libname} < 1.3.5-0.pre7
@@ -59,16 +59,23 @@ Requires:	%name = %{version}-%{release}
 %description	qt3
 This is the qt3 immodule support for gcin
 
+%package        qt4
+Summary:        Qt4 immodule for gcin
+Group:          System/Internationalization
+Requires:       %libname = %{version}-%{release}
+Requires:       %name = %{version}-%{release}
+
+%description    qt4
+This is the qt4 immodule support for gcin
+
 %prep
 %setup -q -n %{name}-%{tarballver}
 %patch0 -p1
 
 %build
 %configure2_5x
-# (tv) this helps building on x86_64:
-#make -C im-client
 # (tv) disable parallel build (broken):
-make OPTFLAGS="%{optflags}"
+make OPTFLAGS="%{optflags} -fPIC" EXTRA_LDFLAGS="%{?ldflags}"
 
 %install
 rm -rf %{buildroot}
@@ -119,6 +126,10 @@ gtk-query-immodules-2.0 > %{_sysconfdir}/gtk-2.0/gtk.immodules.%_lib
 %files qt3
 %defattr(-,root,root)
 %{qt3plugins}/inputmethods/*.so
+
+%files qt4
+%defattr(-,root,root)
+%{qt4plugins}/inputmethods/*.so
 
 %files -n %{libname}
 %defattr(-,root,root)
