@@ -114,7 +114,7 @@ gtk-query-immodules-2.0 > %{_sysconfdir}/gtk-2.0/gtk.immodules.%_lib
 
 %files -f %{name}.lang
 %defattr(-,root,root)
-%doc AUTHORS COPYING Changelog README
+%doc AUTHORS COPYING Changelog README*
 %{_bindir}/*
 %{_datadir}/applications/gcin-setup.desktop
 %{_datadir}/control-center-2.0/capplets/*
@@ -133,5 +133,4 @@ gtk-query-immodules-2.0 > %{_sysconfdir}/gtk-2.0/gtk.immodules.%_lib
 
 %files -n %{libname}
 %defattr(-,root,root)
-%doc COPYING
 %{_libdir}/gcin/*
