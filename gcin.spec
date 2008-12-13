@@ -70,7 +70,7 @@ This is the qt4 immodule support for gcin
 
 %prep
 %setup -q -n %{name}-%{tarballver}
-%patch0 -p1
+%patch0 -p1 -b .qt
 
 %build
 %configure2_5x
