@@ -1,5 +1,5 @@
-%define version	1.4.3
-%define betaver pre12
+%define version	1.4.4
+%define betaver 0
 %define rel 1
 
 %if %betaver
@@ -10,18 +10,19 @@
 %define tarballver %version
 %endif
 
-
 %define libname %mklibname %{name} 1
 
 Summary:	An input method server for traditional Chinese
 Name:		gcin
 Version:	%{version}
 Release:	%{release}
-License:	LGPL
+License:	LGPLv2+
 URL: 		http://www.csie.nctu.edu.tw/~cp76/gcin/
 Group:		System/Internationalization
 Source0:	http://www.csie.nctu.edu.tw/~cp76/gcin/download/%{name}-%{tarballver}.tar.bz2
-Patch0:		gcin-1.4.3-build-qt.patch
+Patch0:		gcin-1.4.4-build-qt.patch
+Patch1:		gcin-1.4.4-fix-str-fmt.patch
+Patch2:		gcin-1.4.4-linkage.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 Requires(post):	gtk+2.0
 Requires(postun): gtk+2.0
@@ -71,8 +72,11 @@ This is the qt4 immodule support for gcin
 %prep
 %setup -q -n %{name}-%{tarballver}
 %patch0 -p1 -b .qt
+%patch1 -p0 -b .str
+%patch2 -p0 -b .linkage
 
 %build
+%define _disable_ld_no_undefined 1
 %configure2_5x
 # (tv) disable parallel build (broken):
 make OPTFLAGS="%{optflags} -fPIC" EXTRA_LDFLAGS="%{?ldflags}"
@@ -114,7 +118,7 @@ gtk-query-immodules-2.0 > %{_sysconfdir}/gtk-2.0/gtk.immodules.%_lib
 
 %files -f %{name}.lang
 %defattr(-,root,root)
-%doc AUTHORS COPYING Changelog README*
+%doc AUTHORS COPYING Changelog.html README*
 %{_bindir}/*
 %{_datadir}/applications/gcin-setup.desktop
 %{_datadir}/control-center-2.0/capplets/*
