@@ -29,6 +29,7 @@ Requires(postun): gtk+2.0
 BuildRequires:	gtk+2-devel
 BuildRequires:	qt3-devel >= 3.3.6-16mdk
 BuildRequires:	qt4-devel
+BuildRequires:	anthy-devel
 Requires:	%{libname} = %{version}-%{release}
 Suggests:	%{name}-qt4 = %{version}-%{release}
 Requires:	locales-zh
