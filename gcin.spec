@@ -23,6 +23,7 @@ Source0:	http://www.csie.nctu.edu.tw/~cp76/gcin/download/%{name}-%{tarballver}.t
 Patch0:		gcin-1.4.4-build-qt.patch
 Patch1:		gcin-1.4.4-fix-str-fmt.patch
 Patch2:		gcin-1.4.4-linkage.patch
+Patch3:		gcin-1.4.4-gcc44.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 Requires(post):	gtk+2.0
 Requires(postun): gtk+2.0
@@ -75,6 +76,7 @@ This is the qt4 immodule support for gcin
 %patch0 -p1 -b .qt
 %patch1 -p0 -b .str
 %patch2 -p0 -b .linkage
+%patch3 -p1 -b .gcc44
 
 %build
 %define _disable_ld_no_undefined 1
