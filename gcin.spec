@@ -102,22 +102,9 @@ rm -rf %{buildroot}
 %post
 # install gtk IM module
 gtk-query-immodules-2.0 > %{_sysconfdir}/gtk-2.0/gtk.immodules.%_lib
-%if %mdkversion < 200900
-%update_menus
-%endif
 
 %postun
 gtk-query-immodules-2.0 > %{_sysconfdir}/gtk-2.0/gtk.immodules.%_lib
-%if %mdkversion < 200900
-%clean_menus
-%endif
-
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
 
 %files -f %{name}.lang
 %defattr(-,root,root)
