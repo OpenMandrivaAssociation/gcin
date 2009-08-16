@@ -1,6 +1,6 @@
 %define version	1.4.5
 %define betaver 0
-%define rel 1
+%define rel 2
 
 %if %betaver
 %define release %mkrel -c %betaver %rel
