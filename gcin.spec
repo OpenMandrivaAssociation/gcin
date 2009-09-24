@@ -1,6 +1,6 @@
 %define version	1.4.5
 %define betaver 0
-%define rel 2
+%define rel 3
 
 %if %betaver
 %define release %mkrel -c %betaver %rel
@@ -24,6 +24,7 @@ Patch0:		gcin-1.4.4-build-qt.patch
 Patch1:		gcin-1.4.4-fix-str-fmt.patch
 Patch2:		gcin-1.4.4-linkage.patch
 Patch3:		gcin-1.4.4-gcc44.patch
+Patch4:		gcin_libdir.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 Requires(post):	gtk+2.0
 Requires(postun): gtk+2.0
@@ -77,6 +78,7 @@ This is the qt4 immodule support for gcin
 %patch1 -p0 -b .str
 %patch2 -p0 -b .linkage
 %patch3 -p1 -b .gcc44
+%patch4 -p1 -b .libdir
 
 %build
 %define _disable_ld_no_undefined 1
