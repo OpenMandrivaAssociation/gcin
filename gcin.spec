@@ -1,6 +1,6 @@
-%define version	1.4.5
-%define betaver 0
-%define rel 3
+%define version	1.4.6
+%define betaver pre17
+%define rel 1
 
 %if %betaver
 %define release %mkrel -c %betaver %rel
@@ -29,7 +29,6 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 Requires(post):	gtk+2.0
 Requires(postun): gtk+2.0
 BuildRequires:	gtk+2-devel
-BuildRequires:	qt3-devel >= 3.3.6-16mdk
 BuildRequires:	qt4-devel
 BuildRequires:	anthy-devel
 Requires:	%{libname} = %{version}-%{release}
@@ -53,16 +52,6 @@ Obsoletes:	%mklibname %{name} 0
 gcin is a Chinese input method server for traditional Chinese. 
 It features a better GTK user interface.
 
-%package	qt3
-Summary:	Qt3 immodule for gcin
-Group:		System/Internationalization
-Conflicts:	%name < 1.3.5-0.pre7
-Requires:	%libname = %{version}-%{release}
-Requires:	%name = %{version}-%{release}
-
-%description	qt3
-This is the qt3 immodule support for gcin
-
 %package        qt4
 Summary:        Qt4 immodule for gcin
 Group:          System/Internationalization
@@ -74,9 +63,9 @@ This is the qt4 immodule support for gcin
 
 %prep
 %setup -q -n %{name}-%{tarballver}
-%patch0 -p1 -b .qt
-%patch1 -p0 -b .str
-%patch2 -p0 -b .linkage
+#patch0 -p1 -b .qt
+#patch1 -p0 -b .str
+#patch2 -p0 -b .linkage
 %patch3 -p1 -b .gcc44
 %patch4 -p1 -b .libdir
 
@@ -118,10 +107,6 @@ gtk-query-immodules-2.0 > %{_sysconfdir}/gtk-2.0/gtk.immodules.%_lib
 %{_iconsdir}/*
 %{_mandir}/man?/*
 %{_libdir}/gtk-2.0/immodules/*.so
-
-%files qt3
-%defattr(-,root,root)
-%{qt3plugins}/inputmethods/*.so
 
 %files qt4
 %defattr(-,root,root)
