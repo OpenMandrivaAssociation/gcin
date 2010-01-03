@@ -1,5 +1,5 @@
 %define version	1.4.6
-%define betaver pre17
+%define betaver 0
 %define rel 1
 
 %if %betaver
