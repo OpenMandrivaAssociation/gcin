@@ -1,4 +1,4 @@
-%define version	1.5.4
+%define version	1.5.6
 %define betaver 0
 %define rel 1
 
@@ -22,7 +22,7 @@ Group:		System/Internationalization
 Source0:	http://www.csie.nctu.edu.tw/~cp76/gcin/download/%{name}-%{tarballver}.tar.bz2
 Patch0:		gcin-1.4.9-qt-link.patch
 Patch1:		gcin-1.4.4-fix-str-fmt.patch
-Patch2:		gcin-1.4.4-linkage.patch
+Patch2:		gcin-1.5.6-gdk.patch
 Patch3:		gcin-1.4.4-gcc44.patch
 Patch4:		gcin_libdir.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
@@ -63,9 +63,9 @@ This is the qt4 immodule support for gcin
 
 %prep
 %setup -q -n %{name}-%{tarballver}
-%patch0 -p0 -b .qt
+#%patch0 -p0 -b .qt
 #patch1 -p0 -b .str
-#patch2 -p0 -b .linkage
+%patch2 -p0 -b .linkage
 %patch3 -p1 -b .gcc44
 %patch4 -p1 -b .libdir
 
