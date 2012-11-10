@@ -1,0 +1,22 @@
+--- data/extr1.c.str	2011-04-14 05:32:56.000000000 +0200
++++ data/extr1.c	2011-04-14 05:33:06.000000000 +0200
+@@ -21,7 +21,7 @@
+     sscanf(line, "%s %s %d", aa, bb, &usecount);
+ 
+     if (utf8_str_N(aa)==1)
+-      printf(line);
++      printf("%s",line);
+   }
+ 
+   return 0;
+--- tsd2a32.cpp.str	2011-07-13 06:39:43.000000000 +0200
++++ tsd2a32.cpp	2011-07-13 06:39:54.000000000 +0200
+@@ -127,7 +127,7 @@
+         if (b_pinyin) {
+           char *t = phokey2pinyin(phbuf[i]);
+ //          dbg("z %s\n", t);
+-          fprintf(fp_out, t);
++          fprintf(fp_out, "%s",t);
+         } else
+           prph2(fp_out, phbuf[i]);
+       } else {

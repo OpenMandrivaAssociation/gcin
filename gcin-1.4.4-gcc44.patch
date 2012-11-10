@@ -1,0 +1,12 @@
+Index: gcin-1.4.4/qt4-im/gcin-imcontext-qt.cpp
+===================================================================
+--- gcin-1.4.4/qt4-im/gcin-imcontext-qt.cpp
++++ gcin-1.4.4/qt4-im/gcin-imcontext-qt.cpp	2009-05-26 17:58:59.000000000 +0200
+@@ -8,6 +8,7 @@
+ #include <QPalette>
+ #include <QInputMethodEvent>
+ #include <QTextCharFormat>
++#include <cstdio>
+ 
+ using namespace Qt;
+ static QWidget *focused_widget;
