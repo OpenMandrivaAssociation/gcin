@@ -5,7 +5,7 @@
 Summary:	An input method server for traditional Chinese
 Name:		gcin
 Version:	2.8.0
-Release:	4
+Release:	5
 License:	LGPLv2+
 Group:		System/Internationalization
 Url: 		http://hyperrate.com/dir.php?eid=67
