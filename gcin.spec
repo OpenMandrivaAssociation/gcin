@@ -1,6 +1,7 @@
 %define major	1
 %define libname %mklibname %{name}-im-client %{major}
 %define devname %mklibname %{name}-im-client -d
+%define _disable_ld_no_undefined 1
 
 Summary:	An input method server for traditional Chinese
 Name:		gcin
@@ -83,7 +84,8 @@ chmod 644 AUTHORS COPYING Changelog.html README*
 %build
 %configure2_5x
 
-%make
+# parallel make broken
+make OPTFLAGS="%{optflags} -fPIC" EXTRA_LDFLAGS="%{?ldflags}" CC="gcc %{?ldflags}" CCLD="gcc %{?ldflags}"
 
 %install
 %makeinstall_std 
