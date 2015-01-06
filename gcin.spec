@@ -5,14 +5,15 @@
 
 Summary:	An input method server for traditional Chinese
 Name:		gcin
-Version:	2.8.1
-Release:	4
+Version:	2.8.3
+Release:	1
 License:	LGPLv2+
 Group:		System/Internationalization
 Url: 		http://hyperrate.com/dir.php?eid=67
 Source0:	http://www.csie.nctu.edu.tw/~cp76/gcin/download/%{name}-%{version}.tar.xz
 Patch3:		gcin-1.4.4-gcc44.patch
 
+BuildRequires:	qt5-devel
 BuildRequires:	qt4-devel
 BuildRequires:	pkgconfig(anthy)
 BuildRequires:	pkgconfig(gtk+-2.0)
@@ -75,13 +76,28 @@ Requires:	%{name} = %{version}-%{release}
 %description    qt4
 This is the qt4 immodule support for gcin.
 
+%package        qt5
+Summary:        Qt5 immodule for gcin
+Group:          System/Internationalization
+Requires:       %{name} = %{version}-%{release}
+
+%description    qt5
+This is the qt4 immodule support for gcin.
+
 %prep
 %setup -q
 %apply_patches
 
 chmod 644 AUTHORS COPYING Changelog.html README*
 
+# fix qt5 version in makefile
+QT5_VERSION=`pkg-config Qt5Gui --modversion`
+sed -i "s/5.2.1/$QT5_VERSION/" qt5-im/Makefile
+
 %build
+
+export CC=gcc
+
 %configure2_5x
 
 # parallel make broken
@@ -123,6 +139,9 @@ gtk-query-immodules-2.0 > %{_sysconfdir}/gtk-3.0/gtk.immodules.%{_lib}
 
 %files qt4
 %{qt4plugins}/inputmethods/*.so
+
+%files qt5
+%{_qt5_plugindir}/platforminputcontexts/*.so
 
 %files -n %{libname}
 %{_libdir}/gcin/libgcin-im-client.so.%{major}*
