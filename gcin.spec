@@ -6,7 +6,7 @@
 Summary:	An input method server for traditional Chinese
 Name:		gcin
 Version:	2.8.3
-Release:	2
+Release:	3
 License:	LGPLv2+
 Group:		System/Internationalization
 Url: 		http://hyperrate.com/dir.php?eid=67
@@ -95,13 +95,10 @@ QT5_VERSION=`pkg-config Qt5Gui --modversion`
 sed -i "s/5.2.1/$QT5_VERSION/" qt5-im/Makefile
 
 %build
-
-export CC=gcc
-
-%configure2_5x
+%configure
 
 # parallel make broken
-make OPTFLAGS="%{optflags} -fPIC" EXTRA_LDFLAGS="%{?ldflags}" CC="gcc %{?ldflags}" CCLD="gcc %{?ldflags}"
+%make -j1 OPTFLAGS="%{optflags} -fPIC" EXTRA_LDFLAGS="%{?ldflags}" CCLD="%{?ldflags}"
 
 %install
 %makeinstall_std 
