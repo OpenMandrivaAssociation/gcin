@@ -5,20 +5,20 @@
 
 Summary:	An input method server for traditional Chinese
 Name:		gcin
-Version:	2.8.3
-Release:	3
+Version:	2.8.4
+Release:	1
 License:	LGPLv2+
 Group:		System/Internationalization
 Url: 		http://hyperrate.com/dir.php?eid=67
 Source0:	http://www.csie.nctu.edu.tw/~cp76/gcin/download/%{name}-%{version}.tar.xz
 Patch3:		gcin-1.4.4-gcc44.patch
 
-BuildRequires:	qt5-devel
-BuildRequires:	qt4-devel
-BuildRequires:	pkgconfig(anthy)
-BuildRequires:	pkgconfig(gtk+-2.0)
-BuildRequires:	pkgconfig(gtk+-3.0)
-BuildRequires:	pkgconfig(xtst)
+#BuildRequires:	qt5-devel
+#BuildRequires:	qt4-devel
+#BuildRequires:	pkgconfig(anthy)
+#BuildRequires:	pkgconfig(gtk+-2.0)
+#BuildRequires:	pkgconfig(gtk+-3.0)
+#BuildRequires:	pkgconfig(xtst)
 Requires:	locales-zh
 Suggests:	%{name}-gtk2 = %{version}-%{release}
 Suggests:	%{name}-gtk3 = %{version}-%{release}

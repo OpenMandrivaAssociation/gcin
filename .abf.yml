@@ -1,5 +1,3 @@
-removed_sources:
-  gcin-1.6.4.tar.bz2: 36ed067b354abb1e0707a4b327e2ad624cb6f88d
-  gcin-2.8.1.tar.xz: fc7323f1e0558675a94e91de2166c484c72d464d
+---
 sources:
-  gcin-2.8.3.tar.xz: 95b980f7cf9dc2ad91803113cdbb4ac831f056de
+  gcin-2.8.4.tar.xz: f422d58aecf65f1d674c79c5c5d346ae568d52d3
