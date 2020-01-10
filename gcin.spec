@@ -86,7 +86,7 @@ This is the qt4 immodule support for gcin.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 chmod 644 AUTHORS COPYING Changelog.html README*
 
