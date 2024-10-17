@@ -9,7 +9,7 @@ Version:	2.8.4
 Release:	2
 License:	LGPLv2+
 Group:		System/Internationalization
-Url: 		http://hyperrate.com/dir.php?eid=67
+Url: 		https://hyperrate.com/dir.php?eid=67
 Source0:	http://www.csie.nctu.edu.tw/~cp76/gcin/download/%{name}-%{version}.tar.xz
 Patch3:		gcin-1.4.4-gcc44.patch
 
