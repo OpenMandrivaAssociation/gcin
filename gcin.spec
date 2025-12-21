@@ -13,6 +13,11 @@ Url: 		https://hyperrate.com/dir.php?eid=67
 Source0:	http://www.csie.nctu.edu.tw/~cp76/gcin/download/%{name}-%{version}.tar.xz
 Patch3:		gcin-1.4.4-gcc44.patch
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	qt5-devel
 BuildRequires:	qt4-devel
 BuildRequires:	pkgconfig(anthy)
